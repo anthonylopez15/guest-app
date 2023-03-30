@@ -10,5 +10,7 @@ class DataBaseConstants private constructor() {
             const val NAME = "name"
             const val PRESENCE = "presence"
         }
+
+        const val ID = "guestid"
     }
 }
