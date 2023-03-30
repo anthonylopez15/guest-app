@@ -5,15 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.convidados.databinding.RowGuestsBinding
 import com.example.convidados.model.GuestModel
+import com.example.convidados.view.listener.OnGuestListener
 import com.example.convidados.view.viewholder.GuestsViewHolder
 
 class GuestsAdapter: RecyclerView.Adapter<GuestsViewHolder>() {
 
     private var guestList: List<GuestModel> = listOf()
+    private lateinit var listener: OnGuestListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuestsViewHolder {
         val item = RowGuestsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return GuestsViewHolder(item)
+        return GuestsViewHolder(item, listener)
     }
 
     override fun onBindViewHolder(holder: GuestsViewHolder, position: Int) {
@@ -27,6 +29,10 @@ class GuestsAdapter: RecyclerView.Adapter<GuestsViewHolder>() {
     fun updateGuests(list: List<GuestModel>) {
         guestList = list
         notifyDataSetChanged()
+    }
+
+    fun attachListener(guestListener: OnGuestListener) {
+        listener = guestListener
     }
 
 }
