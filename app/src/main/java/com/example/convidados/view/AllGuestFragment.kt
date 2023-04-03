@@ -12,25 +12,22 @@ import com.example.convidados.constants.DataBaseConstants
 import com.example.convidados.databinding.FragmentAllGuestsBinding
 import com.example.convidados.view.adapter.GuestsAdapter
 import com.example.convidados.view.listener.OnGuestListener
-import com.example.convidados.viewmodel.AllGuestViewModel
+import com.example.convidados.viewmodel.GuestViewModel
 
 class AllGuestFragment : Fragment() {
 
     private var _binding: FragmentAllGuestsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: AllGuestViewModel
+    private lateinit var viewModel: GuestViewModel
     private val adapter = GuestsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        viewModel = ViewModelProvider(this).get(AllGuestViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(GuestViewModel::class.java)
         _binding = FragmentAllGuestsBinding.inflate(inflater, container, false)
 
-//        Layout
-        binding.recyclerAllGuests.layoutManager = LinearLayoutManager(context)
-
-//        Adapter
-        binding.recyclerAllGuests.adapter = adapter
+        binding.recyclerGuests.layoutManager = LinearLayoutManager(context)
+        binding.recyclerGuests.adapter = adapter
 
         val listener = object : OnGuestListener {
             override fun onClick(id: Int) {

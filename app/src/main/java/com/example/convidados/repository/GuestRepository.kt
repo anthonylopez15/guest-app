@@ -152,7 +152,7 @@ class GuestRepository private constructor(context: Context) {
 
             val projection = arrayOf(columnId, columnName, columnPresence)
 
-            val selection = "columnPresence = ?"
+            val selection = "presence = ?"
             val args = arrayOf("0")
 
             val cursor = db.query(
